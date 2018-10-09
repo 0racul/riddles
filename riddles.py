@@ -10,21 +10,26 @@ result_str = []
 
 for str_symbol in source_str:
 
-    if str_symbol not in [' ', ',', '.', '(', ')']:
+    if str_symbol not in [" ", ",", ".", "(", ")", "'"]:
 
         match = alphabet.index(str_symbol)
         match_plus = match + 2
 
-        if match_plus <= len(alphabet):
+        if match_plus < len(alphabet):
             result = result_str.append(alphabet[match_plus])
-        else:
+
+        elif match_plus >= len(alphabet):
             match_minus = match_plus - len(alphabet)
             result = result_str.append(alphabet[match_minus])
+
+        else:
+            result = result_str.append(alphabet[match_plus - 1])
     else:
 
         result = result_str.append(str_symbol)
 
-print(result_str)
+
+print(*result_str)
 
 
 
