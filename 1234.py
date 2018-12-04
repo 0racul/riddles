@@ -19,22 +19,23 @@ class Knight(Warrior):
       self.attack = 7
 
 
-class Army(Warrior, Knight):
+class Army(Knight):
 
     def __init__(self):
-
+        super(Knight, self).__init__()
+        
         army_amount = 0
         warriors_amount = 0
         knights_amount = 0
         self.warriors_amount = warriors_amount
-        self.warriors_amount = knights_amount
+        self.knights_amount = knights_amount
 
 
     def add_units(self, unit_type, amount):
 
         if unit_type is Warrior:
 
-            for i in amount:
+            for i in range(amount):
 
                 locals()['M' + str(choice(ascii_lowercase) for i in range(5))] = Warrior()
 
@@ -42,7 +43,7 @@ class Army(Warrior, Knight):
 
         elif unit_type is Knight:
 
-            for i in amount:
+            for i in range(amount):
 
                 locals()['M' + str(choice(ascii_lowercase) for i in range(5))] = Knight()
 
@@ -55,9 +56,11 @@ class Army(Warrior, Knight):
 class Battle(Army):
 
     def __init__(self):
+        super(Army, self).__init__()
 
 
     def fight(self, unit_1, unit_2):
+
 
         while True:
             unit_2.health = unit_2.health - unit_1.attack
